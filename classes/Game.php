@@ -8,6 +8,8 @@ class Game extends Card
         public string $age,
         public string $material,
         public string $dimension,
+        public string $type,
+
     ) {
     }
 

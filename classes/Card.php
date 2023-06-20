@@ -3,10 +3,12 @@
 class Card
 {
     public function __construct(
-        public string $img,
-        public string $title,
-        public int $price,
-        public string $category,
+        protected string $title,
+        private int $price,
+        private string $img,
+        private string $category,
+        private string $description,
+        private string $availability,
 
     ) {
 
@@ -15,6 +17,6 @@ class Card
 
     public function infoCard()
     {
-        return $this->img . '<br>' . $this->title . '<br>' . $this->price . '<br>' . $this->category;
+        return $this->title . '<br>' . $this->price . '<br>' . $this->img . '<br>' . $this->category;
     }
 }

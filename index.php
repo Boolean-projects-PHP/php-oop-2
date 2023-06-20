@@ -2,8 +2,9 @@
 include __DIR__ . '/classes/Card.php';
 include __DIR__ . '/classes/Food.php';
 include __DIR__ . '/classes/Game.php';
+include __DIR__ . '/db.php';
 
-$card = new Card('img', 'title', 20, 'category');
+$card = new Card('title', 20, 'img', 'category');
 
 ?>
 
@@ -21,7 +22,16 @@ $card = new Card('img', 'title', 20, 'category');
 </head>
 
 <body>
+    <div class="container">
+        <div class="products">
+            <div class="game_product">
 
+            </div>
+
+            <div class="food_product">
+
+            </div>
+        </div>
 
 </body>
 
