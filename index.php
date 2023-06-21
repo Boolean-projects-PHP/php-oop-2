@@ -2,9 +2,15 @@
 include __DIR__ . '/classes/Card.php';
 include __DIR__ . '/classes/Food.php';
 include __DIR__ . '/classes/Game.php';
+include __DIR__ . '/classes/Kennel.php';
+include __DIR__ . '/classes/Material.php';
+include __DIR__ . '/classes/Taste.php';
+include __DIR__ . '/classes/Type.php';
+include __DIR__ . '/classes/Category.php';
+include __DIR__ . '/classes/Product.php';
 include __DIR__ . '/db.php';
 
-$card = new Card('title', 20, 'img', 'category');
+
 
 ?>
 
@@ -23,16 +29,41 @@ $card = new Card('title', 20, 'img', 'category');
 
 <body>
     <div class="container">
-        <div class="products">
-            <div class="game_product">
+        <?php
+
+        foreach ($arrCards as $index => $card) { ?>
+            <br>
+            <div>
+
+                <div><img src="images/<?= $card->img ?>"></div>
+                <div>
+                    <?= $card->title ?>
+                </div>
+                <div>
+                    <?= $card->price ?>
+                </div>
+
+                <div>
+                    <?php
+                    foreach ($card->category as $category) { ?>
+                        <div>
+                            <?= $category->name ?>
+                        </div>
+                    <?
+                    } ?>
+                </div>
+                <div>
+                    <?= $card->description ?>
+                </div>
+                <div>
+                    <?= $card->availability ?>
+                </div>
 
             </div>
-
-            <div class="food_product">
-
-            </div>
-        </div>
-
+            <br>
+            <?php
+        } ?>
+    </div>
 </body>
 
 </html>
