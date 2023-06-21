@@ -3,19 +3,20 @@
 class Card
 {
     public function __construct(
-        public string $title,
-        public int $price,
-        public string $img,
-        public array $category,
-        public string $description,
-        public string $availability,
+        protected int $id,
+        protected string $name,
+        protected string $img,
+        protected int $price,
+        protected Category $category,
+        protected string $description,
     ) {
 
-
     }
-
-    public function infoCard()
+    public function getFormattedPrice()
     {
-        return $this->title . '<br>' . $this->price . '<br>' . $this->img . '<br>' . $this->category . '<br>' . $this->description . '<br>' . $this->availability;
+        return $this->price / 100 . ' €';
     }
+
+
+
 }

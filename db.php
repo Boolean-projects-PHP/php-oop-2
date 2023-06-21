@@ -1,105 +1,37 @@
 <?php
 
-$arrTastes = [
-    new Taste('Chicken', 'descrizione'),
-    new Taste('Beef', 'descrizione'),
-    new Taste('Fish', 'descrizione'),
-    new Taste('Tuna', 'descrizione'),
-    new Taste('Salmon', 'descrizione'),
-    new Taste('Shrimp', 'descrizione'),
-];
-
-$arrTypes = [
-    new Type('Chewing', 'description'),
-    new Type('Fetching', 'description'),
-    new Type('Puzzle', 'description'),
-    new Type('Swatting', 'description'),
-    new Type('Jumping', 'description'),
-];
-
-$arrMaterials = [
-    new Material('Plastic', 'description'),
-    new Material('Wood', 'description'),
-    new Material('Fabric', 'description'),
-];
-
-$arrProducts = [
-    new Product('food'),
-    new Product('game'),
-    new Product('kennel'),
+$categories = [
+    new Category(
+        1,
+        'Cats',
+    ),
+    new Category(
+        2,
+        'Dogs',
+    ),
 ];
 
 
-
-
-$arrCategories = [
-    new Category('dog'),
-    new Category('cat'),
+$tastes = [
+    new Taste(1, 'Chicken'),
+    new Taste(2, 'Beef'),
+    new Taste(3, 'Fish'),
+    new Taste(4, 'Tuna'),
+    new Taste(5, 'Salmon'),
+    new Taste(6, 'Shrimp'),
 ];
 
-$dataCards = [
-    [
-        'title' => 'Card 1',
-        'price' => 20,
-        'img' => 'food1.jpg',
-        'category' => [1],
-        'taste' => [2, 3, 4],
-        'description' => 'Premium dog food for all breeds',
-        'availability' => 'In stock'
-    ],
-    [
-        'title' => 'Card 2',
-        'price' => 20,
-        'img' => 'food2.jpg',
-        'category' => [0],
-        'taste' => [0, 1],
-        'description' => 'Premium dog food for all breeds',
-        'availability' => 'In stock'
-    ],
-    [
-        'title' => 'Card 3',
-        'price' => 20,
-        'img' => 'food3.jpg',
-        'category' => [0],
-        'taste' => [0],
-        'description' => 'Premium dog food for all breeds',
-        'availability' => 'In stock'
-    ],
-    [
-        'title' => 'Card 4',
-        'price' => 20,
-        'img' => 'food4.jpg',
-        'category' => [1],
-        'taste' => [2, 4],
-        'description' => 'Premium dog food for all breeds',
-        'availability' => 'In stock'
-    ],
-    [
-        'title' => 'Card 5',
-        'price' => 20,
-        'img' => 'food5.jpg',
-        'category' => [0],
-        'taste' => [1],
-        'description' => 'Premium dog food for all breeds',
-        'availability' => 'In stock'
-    ],
+
+$arrCards = [
+    new Food(1, 'Croccantini', 'img', 2000, $categories[0], 'cibo per il tuo animale', $tastes[0], '2023-08-14', 300),
+    new Food(1, 'Bocconcini', 'img', 1550, $categories[0], 'cibo per il tuo animale', $tastes[3], '2025-04-30', 300),
+    new Food(1, 'Cibo in scatola', 'img', 1999, $categories[1], 'cibo per il tuo animale', $tastes[1], '2024-05-20', 300),
+
+    new Game(1, 'Pallina', 'img', 900, $categories[1], 'gioco per il tuo animale', 'Adult', 'plastica'),
+    new Game(1, 'Pallina', 'img', 850, $categories[0], 'gioco per il tuo animale', 'Adult', 'plastica'),
+    new Game(1, 'Pallina', 'img', 2500, $categories[1], 'gioco per il tuo animale', 'Adult', 'plastica'),
+
+    new Kennel(1, 'Cuccia', 'img', 15000, $categories[0], 'cuccia per il tuo animale', '200 x 150 x 250'),
+    new Kennel(1, 'Cuccia', 'img', 9000, $categories[1], 'cuccia per il tuo animale', '200 x 150 x 250'),
+    new Kennel(1, 'Cuccia', 'img', 5000, $categories[0], 'cuccia per il tuo animale', '200 x 150 x 250'),
 ];
-
-$arrCards = [];
-foreach ($dataCards as $card) {
-    $cardCategories = [];
-    foreach ($card['category'] as $index) {
-        $cardCategories[] = $arrCategories[$index];
-    }
-
-    $arrCards[] = new Card(
-        $card['title'],
-        $card['price'],
-        $card['img'],
-        $cardCategories,
-        $card['description'],
-        $card['availability'],
-    );
-}
-
-// var_dump($arrCards);

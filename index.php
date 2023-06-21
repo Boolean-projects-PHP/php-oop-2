@@ -1,14 +1,11 @@
 <?php
-include __DIR__ . '/classes/Card.php';
-include __DIR__ . '/classes/Food.php';
-include __DIR__ . '/classes/Game.php';
-include __DIR__ . '/classes/Kennel.php';
-include __DIR__ . '/classes/Material.php';
-include __DIR__ . '/classes/Taste.php';
-include __DIR__ . '/classes/Type.php';
-include __DIR__ . '/classes/Category.php';
-include __DIR__ . '/classes/Product.php';
+include_once __DIR__ . '/classes/Food.php';
+include_once __DIR__ . '/classes/Game.php';
+include_once __DIR__ . '/classes/Kennel.php';
+include_once __DIR__ . '/classes/Category.php';
+include_once __DIR__ . '/classes/Taste.php';
 include __DIR__ . '/db.php';
+
 
 
 
@@ -29,40 +26,13 @@ include __DIR__ . '/db.php';
 
 <body>
     <div class="container">
-        <?php
-
-        foreach ($arrCards as $index => $card) { ?>
-            <br>
-            <div>
-
-                <div><img src="images/<?= $card->img ?>"></div>
-                <div>
-                    <?= $card->title ?>
-                </div>
-                <div>
-                    <?= $card->price ?>
-                </div>
-
-                <div>
-                    <?php
-                    foreach ($card->category as $category) { ?>
-                        <div>
-                            <?= $category->name ?>
-                        </div>
-                    <?
-                    } ?>
-                </div>
-                <div>
-                    <?= $card->description ?>
-                </div>
-                <div>
-                    <?= $card->availability ?>
-                </div>
-
-            </div>
-            <br>
+        <h1 class="text-center">Bool Pet Shop</h1>
+        <div class="row row-cols-3 g-3">
             <?php
-        } ?>
+            foreach ($arrCards as $Card) {
+                echo $Card->structureCard();
+            } ?>
+        </div>
     </div>
 </body>
 

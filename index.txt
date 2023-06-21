@@ -1,0 +1,299 @@
+<?php
+include __DIR__ . '/classes/Card.php';
+include __DIR__ . '/classes/Food.php';
+include __DIR__ . '/classes/Game.php';
+include __DIR__ . '/classes/Kennel.php';
+include __DIR__ . '/classes/Material.php';
+include __DIR__ . '/classes/Taste.php';
+include __DIR__ . '/classes/Type.php';
+include __DIR__ . '/classes/Category.php';
+include __DIR__ . '/classes/Product.php';
+include __DIR__ . '/db.php';
+
+
+
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+        rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+        crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <?php
+
+        foreach ($arrCards as $index => $card) { ?>
+            <br>
+            <div>
+
+                <div><img src="images/<?= $card->img ?>"></div>
+                <div>
+                    <?= $card->title ?>
+                </div>
+                <div>
+                    <?= $card->price ?>
+                </div>
+
+                <div>
+                    <?php
+                    foreach ($card->category as $category) { ?>
+                        <div>
+                            <?= $category->name ?>
+                        </div>
+                    <?
+                    } ?>
+                </div>
+                <div>
+                    <?= $card->description ?>
+                </div>
+                <div>
+                    <?= $card->availability ?>
+                </div>
+
+            </div>
+            <br>
+            <?php
+        } ?>
+    </div>
+</body>
+
+</html>
+
+
+<?php
+
+// $arrTypes = [
+//     new Type('Chewing', 'description'),
+//     new Type('Fetching', 'description'),
+//     new Type('Puzzle', 'description'),
+//     new Type('Swatting', 'description'),
+//     new Type('Jumping', 'description'),
+// ];
+
+// $arrMaterials = [
+//     new Material('Plastic', 'description'),
+//     new Material('Wood', 'description'),
+//     new Material('Fabric', 'description'),
+// ];
+
+
+
+// $arrProducts = [
+//     new Product('food'),
+//     new Product('game'),
+//     new Product('kennel'),
+// ];
+
+
+
+
+// $arrCategories = [
+//     new Category('dog'),
+//     new Category('cat'),
+// ];
+
+// $arrTastes = [
+//     new Taste('Chicken'),
+//     new Taste('Beef'),
+//     new Taste('Fish'),
+//     new Taste('Tuna'),
+//     new Taste('Salmon'),
+//     new Taste('Shrimp'),
+// ];
+
+// $dataCards = [
+//     [
+//         'title' => 'Card 1',
+//         'price' => 20,
+//         'img' => 'food1.jpg',
+//         'category' => [1],
+//         'taste' => [2, 3, 4],
+//         'description' => 'Premium dog food for all breeds',
+//         'availability' => 'In stock'
+//     ],
+//     [
+//         'title' => 'Card 2',
+//         'price' => 20,
+//         'img' => 'food2.jpg',
+//         'category' => [0],
+//         'taste' => [0, 1],
+//         'description' => 'Premium dog food for all breeds',
+//         'availability' => 'In stock'
+//     ],
+//     [
+//         'title' => 'Card 3',
+//         'price' => 20,
+//         'img' => 'food3.jpg',
+//         'category' => [0],
+//         'taste' => [0],
+//         'description' => 'Premium dog food for all breeds',
+//         'availability' => 'In stock'
+//     ],
+//     [
+//         'title' => 'Card 4',
+//         'price' => 20,
+//         'img' => 'food4.jpg',
+//         'category' => [1],
+//         'taste' => [4, 5],
+//         'description' => 'Premium dog food for all breeds',
+//         'availability' => 'In stock'
+//     ],
+//     [
+//         'title' => 'Card 5',
+//         'price' => 20,
+//         'img' => 'food5.jpg',
+//         'category' => [0],
+//         'taste' => [1],
+//         'description' => 'Premium dog food for all breeds',
+//         'availability' => 'In stock'
+//     ],
+// ];
+
+// $arrCards = [];
+// foreach ($dataCards as $card) {
+//     $cardCategories = [];
+//     foreach ($card['category'] as $index) {
+//         $cardCategories[] = $arrCategories[$index];
+//     }
+//     $cardTastes = [];
+//     foreach ($card['taste'] as $index) {
+//         $cardTastes[] = $arrTastes[$index];
+//     }
+
+//     $arrCards[] = new Card(
+//         $card['title'],
+//         $card['price'],
+//         $card['img'],
+//         $cardCategories,
+//         $cardTastes,
+//         $card['description'],
+//         $card['availability'],
+//     );
+// }
+
+// var_dump($arrCards);
+
+
+<?php
+
+class Card
+{
+    public function __construct(
+        public string $title,
+        public int $price,
+        public string $img,
+        public array $category,
+        public string $description,
+        public string $availability,
+    ) {
+
+
+    }
+
+    public function infoCard()
+    {
+        return $this->title . '<br>' . $this->price . '<br>' . $this->img . '<br>' . $this->category . '<br>' . $this->description . '<br>' . $this->availability;
+    }
+}
+
+?php
+
+class Category
+{
+    public function __construct(
+        public string $name,
+    ) {
+    }
+}
+
+<?php
+
+
+class Food extends Card
+{
+
+    public function __construct(
+        private string $age,
+        private string $weight,
+    ) {
+    }
+
+
+}
+
+<?php
+
+
+class Food extends Card
+{
+
+    public function __construct(
+        private string $age,
+        private string $weight,
+    ) {
+    }
+
+
+}
+
+<?php
+
+class Kennel extends Card
+{
+    private function __construct(
+        private string $dimension,
+    ) {
+    }
+}
+
+<?php
+
+class Material
+{
+    public function __construct(
+        public string $name,
+        public string $description,
+    ) {
+    }
+}
+
+<?php
+
+class Product
+{
+    public function __construct(
+        public string $name,
+    ) {
+    }
+}
+
+<?php
+
+class Taste
+{
+    public function __construct(
+        public string $name,
+        public string $description
+    ) {
+    }
+}
+
+<?php
+
+class Type
+{
+    public function __construct(
+        public string $name,
+        public string $description,
+    ) {
+    }
+}
